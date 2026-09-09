@@ -15,13 +15,6 @@ The application is deployed live and ready for instant evaluation:
 
 ---
 
-## Setup and Run Instructions
-
-### Live Web Application
-Simply open **[https://super-join-assingnment-3642571d56fb.herokuapp.com/](https://super-join-assingnment-3642571d56fb.herokuapp.com/)** in any modern web browser to interact with the system, inspect starter dataset facts, upload new PDFs, and view cross-document relationship reasoning.
-
----
-
 ## Video Demo
 * **Video & Screenshots Directory:** 🎥 **[https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x](https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x)**
   * Contains a video (< 3 minutes) demonstrating PDF upload, fact extraction, verbatim source evidence grounding, and the four required cases.
