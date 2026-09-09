@@ -57,7 +57,33 @@ def rows_to_dicts(cursor):
 def health_check():
     return {"status": "ok", "service": "Fact Knowledge Layer Engine"}
 
+@app.get("/api/stats")
+def get_stats():
+    """Returns database metrics & summary statistics."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM documents")
+    doc_count = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM facts")
+    fact_count = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM relationships")
+    rel_count = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM case_studies")
+    case_count = cursor.fetchone()[0]
+    conn.close()
+    return {
+        "status": "ok",
+        "documents_count": doc_count,
+        "facts_count": fact_count,
+        "relationships_count": rel_count,
+        "cases_count": case_count,
+        "total_documents": doc_count,
+        "total_facts": fact_count,
+        "total_relationships": rel_count
+    }
+
 @app.get("/api/documents")
+
 def get_documents():
     conn = get_connection()
     cursor = conn.cursor()

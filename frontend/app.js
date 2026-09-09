@@ -42,23 +42,45 @@ function initNavigation() {
 
 // Initial Data Load
 async function loadDashboardData() {
-    await Promise.all([
+    await Promise.allSettled([
         fetchCases(),
         fetchFacts(),
         fetchRelationships(),
-        fetchDocuments()
+        fetchDocuments(),
+        fetchStats()
     ]);
+}
+
+async function fetchStats() {
+    try {
+        const res = await fetch('/api/stats');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.documents_count !== undefined) {
+            document.getElementById('stat-docs').textContent = data.documents_count;
+        }
+        if (data.facts_count !== undefined) {
+            document.getElementById('stat-facts').textContent = data.facts_count;
+        }
+        if (data.relationships_count !== undefined) {
+            document.getElementById('stat-rels').textContent = data.relationships_count;
+        }
+    } catch (err) {
+        console.warn('Stats fetch notice:', err);
+    }
 }
 
 async function fetchCases() {
     try {
         const res = await fetch('/api/cases');
+        if (!res.ok) return;
         const data = await res.json();
         renderCases(data.cases || []);
     } catch (err) {
         console.error('Error fetching cases:', err);
     }
 }
+
 
 function renderCases(cases) {
     const container = document.getElementById('cases-container');
