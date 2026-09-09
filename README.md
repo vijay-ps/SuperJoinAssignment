@@ -48,6 +48,12 @@ Simply open **[https://super-join-assingnment-3642571d56fb.herokuapp.com/](https
 * **SentenceTransformers (`all-MiniLM-L6-v2`)**: Local vector similarity for candidate pair generation.
 * **PyMuPDF**: PDF text extraction and line page grounding.
 
+### System Extensions (Brownie Points Covered)
+* **Large PDF Handling**: `PDFParser.chunk_pdf()` streams document pages into 3–5 page windows with `[PAGE X]` tags to prevent LLM context overflows or latency spikes.
+* **Knowledge Layer Scaling**: Local `SentenceTransformers` vector prefiltering filters top candidate fact pairs, eliminating $O(N^2)$ pairwise LLM calls across large document sets.
+* **Dynamic Schema Evolution**: `FactExtractor` uses open JSON metadata (`temporal_context`, `scope_context`, `unit`, `metric_type`) allowing any numerical or qualitative fact type to be stored dynamically.
+* **Incremental Processing**: Uploading a new PDF processes and matches *only* the new document (`/api/upload`) against stored knowledge without rebuilding or wiping existing document facts.
+
 ---
 
 ## Demonstration of the 4 Required Cases
