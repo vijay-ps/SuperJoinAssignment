@@ -13,15 +13,6 @@ The application is deployed live and ready for instant evaluation:
 ### 📹 Video Demo & Screenshots (Google Drive)
 * **Demo Video & Screenshots Link:** 🎥 **[https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x](https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x)**
 
----
-
-## Video Demo
-* **Video & Screenshots Directory:** 🎥 **[https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x](https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x)**
-  * Contains a video (< 3 minutes) demonstrating PDF upload, fact extraction, verbatim source evidence grounding, and the four required cases.
-  * Includes UI screenshots showcasing relationship modal cards and candidate matching.
-
----
-
 ## Approach
 
 ### Architecture & Pipeline Overview
