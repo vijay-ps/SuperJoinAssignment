@@ -329,23 +329,16 @@ function initUploadControls() {
                 body: formData
             });
 
-            let data = {};
-            try {
-                data = await res.json();
-            } catch (jsonErr) {
-                data = { detail: `Server error (${res.status} ${res.statusText}). Please retry.` };
-            }
-
+            const data = await res.json();
             submitBtn.innerHTML = `<i class="fa-solid fa-bolt"></i> Extract Facts & Reconcile`;
             submitBtn.disabled = false;
 
-            if (res.ok && data.status === "success") {
+            if (res.ok) {
                 renderUploadResults(data);
                 loadDashboardData();
             } else {
-                alert(`Upload notice: ${data.detail || 'Processing could not be completed.'}`);
+                alert(`Upload failed: ${data.detail || 'Unknown error'}`);
             }
-
         } catch (err) {
             console.error(err);
             submitBtn.innerHTML = `<i class="fa-solid fa-bolt"></i> Extract Facts & Reconcile`;
