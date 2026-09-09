@@ -1,0 +1,23 @@
+# Environment & Credentials - CRITICAL
+.env
+*.env
+.env.*
+
+# Python Cache & Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.so
+
+# Data & Uploads
+data/uploads/*
+!data/uploads/.gitkeep
+
+# IDEs & System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+venv/
+env/

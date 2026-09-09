@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fact Knowledge Layer | Superjoin Engineering Intern Assignment</title>
+    <!-- Google Fonts Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="brand-text">
+                    <h2>Fact Layer</h2>
+                    <span class="badge-subtitle">Superjoin AI Engine</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="cases-tab">
+                    <i class="fa-solid fa-star text-gold"></i>
+                    <span>4 Required Cases</span>
+                </button>
+                <button class="nav-item" data-tab="facts-tab">
+                    <i class="fa-solid fa-database text-cyan"></i>
+                    <span>Fact Matrix</span>
+                </button>
+                <button class="nav-item" data-tab="relationships-tab">
+                    <i class="fa-solid fa-network-wired text-violet"></i>
+                    <span>Cross-Doc Links</span>
+                </button>
+                <button class="nav-item" data-tab="upload-tab">
+                    <i class="fa-solid fa-cloud-arrow-up text-green"></i>
+                    <span>Upload & Process</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">Gemini 3.6 Flash Active</span>
+                </div>
+                <button id="btn-reseed" class="btn-secondary-sm" title="Reload Starter Dataset">
+                    <i class="fa-solid fa-rotate"></i> Reset Starter Data
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header Bar -->
+            <header class="top-header">
+                <div class="header-title">
+                    <h1 id="page-title">Fact Knowledge Layer</h1>
+                    <p class="subtitle" id="page-subtitle">Cross-Document Extraction, Evidence Grounding & AI Reconciliation</p>
+                </div>
+                <div class="header-metrics">
+                    <div class="metric-chip">
+                        <span class="metric-val" id="stat-docs">6</span>
+                        <span class="metric-lbl">PDF Documents</span>
+                    </div>
+                    <div class="metric-chip">
+                        <span class="metric-val" id="stat-facts">9</span>
+                        <span class="metric-lbl">Extracted Facts</span>
+                    </div>
+                    <div class="metric-chip">
+                        <span class="metric-val" id="stat-rels">4</span>
+                        <span class="metric-lbl">Reconciled Links</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- TAB 1: 4 Required Cases Spotlight -->
+            <section id="cases-tab" class="tab-content active">
+                <div class="banner-card">
+                    <div class="banner-icon">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="banner-text">
+                        <h3>Superjoin Assignment Showcase: The 4 Required Cases</h3>
+                        <p>Explore how our AI system discovers grounded evidence, reconciles context, identifies true contradictions, and self-corrects extraction failures across starter PDF reports.</p>
+                    </div>
+                </div>
+
+                <div class="cases-grid" id="cases-container">
+                    <!-- Case cards will be rendered here dynamically -->
+                </div>
+            </section>
+
+            <!-- TAB 2: Fact Knowledge Matrix -->
+            <section id="facts-tab" class="tab-content">
+                <div class="filter-bar">
+                    <div class="search-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="fact-search" placeholder="Search facts by metric, entity, or quote...">
+                    </div>
+                    <select id="doc-filter" class="filter-select">
+                        <option value="">All Documents</option>
+                    </select>
+                </div>
+
+                <div class="table-container glass-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Subject & Entity</th>
+                                <th>Reported Value</th>
+                                <th>Time Period</th>
+                                <th>Scope Context</th>
+                                <th>Source Document</th>
+                                <th>Page Grounding</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="facts-tbody">
+                            <!-- Fact rows rendered dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- TAB 3: Cross-Document Relationships -->
+            <section id="relationships-tab" class="tab-content">
+                <div class="relationships-list" id="relationships-container">
+                    <!-- Relationship cards rendered dynamically -->
+                </div>
+            </section>
+
+            <!-- TAB 4: Upload & Process New PDF -->
+            <section id="upload-tab" class="tab-content">
+                <div class="upload-grid">
+                    <div class="glass-card upload-box">
+                        <div class="upload-icon">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <h3>Upload New PDF Document</h3>
+                        <p>Upload any financial report, economic survey, or corporate PDF to extract facts and link with existing knowledge.</p>
+                        
+                        <form id="upload-form">
+                            <div class="drop-zone" id="drop-zone">
+                                <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+                                <p>Drag & Drop PDF here or <span class="browse-link">browse file</span></p>
+                                <input type="file" id="pdf-file-input" accept=".pdf" class="file-input">
+                            </div>
+                            <div class="selected-file-name" id="selected-file-info">No file selected</div>
+                            <button type="submit" id="btn-submit-upload" class="btn-primary" disabled>
+                                <i class="fa-solid fa-bolt"></i> Extract Facts & Reconcile
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="glass-card info-box">
+                        <h3><i class="fa-solid fa-circle-info"></i> How Knowledge Reconciliation Works</h3>
+                        <ul class="info-list">
+                            <li>
+                                <div class="step-num">1</div>
+                                <div><strong>PDF Structure & Chunking:</strong> PyMuPDF parses document layout, section headings, and page boundaries.</div>
+                            </li>
+                            <li>
+                                <div class="step-num">2</div>
+                                <div><strong>Gemini Fact Extraction:</strong> LLM extracts structured claims with subject, value, temporal scope, and verbatim quote.</div>
+                            </li>
+                            <li>
+                                <div class="step-num">3</div>
+                                <div><strong>Vector Candidate Search:</strong> SentenceTransformers finds high-similarity candidate pairs across existing document database.</div>
+                            </li>
+                            <li>
+                                <div class="step-num">4</div>
+                                <div><strong>AI Contextual Reconciliation:</strong> Classifies relationships into Corroborations, Contradictions, Reconciliations, or Extraction Failures with reasoning.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Live Upload Results Section -->
+                <div id="upload-results-section" class="upload-results-container hidden">
+                    <h3 class="results-heading"><i class="fa-solid fa-square-poll-vertical"></i> Live Processing Results</h3>
+                    <div id="upload-results-content"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Evidence Modal -->
+    <div id="evidence-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-quote-left text-cyan"></i> Source Evidence Grounding</h3>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-evidence-body">
+                <!-- Modal content inserted via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
