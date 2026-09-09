@@ -1,23 +1,20 @@
-# Environment & Credentials - CRITICAL
+# Environment & Secrets
 .env
-*.env
-.env.*
+.env.local
 
-# Python Cache & Artifacts
+# Python Bytecode & Cache
 __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
-*.so
 
-# Data & Uploads
+# Data & Database Uploads
+data/fact_layer.db
 data/uploads/*
 !data/uploads/.gitkeep
 
-# IDEs & System
+# IDE & OS Files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
-venv/
-env/
