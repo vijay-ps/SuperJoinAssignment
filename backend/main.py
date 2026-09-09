@@ -262,6 +262,20 @@ async def upload_pdf(file: UploadFile = File(...)):
         "new_relationships": new_relationships
     }
 
+@app.get("/styles.css")
+def get_styles():
+    index_path = os.path.join(FRONTEND_DIR, "styles.css")
+    if os.path.exists(index_path):
+        return FileResponse(index_path, media_type="text/css")
+    raise HTTPException(status_code=404, detail="styles.css not found")
+
+@app.get("/app.js")
+def get_app_js():
+    index_path = os.path.join(FRONTEND_DIR, "app.js")
+    if os.path.exists(index_path):
+        return FileResponse(index_path, media_type="application/javascript")
+    raise HTTPException(status_code=404, detail="app.js not found")
+
 # Mount static frontend
 if os.path.exists(FRONTEND_DIR):
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
@@ -276,3 +290,4 @@ def read_index():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+
