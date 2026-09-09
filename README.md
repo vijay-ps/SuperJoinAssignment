@@ -4,13 +4,12 @@ An intelligent, grounded **Fact Knowledge Layer** system that extracts numerical
 
 ---
 
-## 🌐 Live Production Deployment & Demo
-* **Live Interactive Web App:** 👉 **[https://superjoinassignment.onrender.com/](https://superjoinassignment.onrender.com/)**
-* **Video Demo Link (3 Minutes):** 🎥 **[https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x](https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x)**
+## 📽️ Demo Video & Output Artifacts
+* **Video Demo & Screenshots (Google Drive):** 🎥 **[https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x](https://drive.google.com/drive/u/0/folders/1A8fCkEy1ocbkZkvZ0g3cvc6dKflrWg3x)**
 
 ---
 
-## 🚀 Setup and Run Instructions (Local)
+## 🚀 Setup and Run Instructions (Local Execution)
 
 ### Prerequisites
 * Python 3.10+ installed
@@ -47,15 +46,15 @@ python backend/seeder.py
 ```
 
 ### 4. Run Application & Web UI
-Start the FastAPI server:
+Start the local FastAPI server:
 ```bash
 python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 Open your browser and navigate to:
 👉 **`http://127.0.0.1:8000`**
 
-### 5. Automated Test Suite
-Run the comprehensive integration test suite to verify pipeline health and edge case handling:
+### 5. Automated Integration & Grader Attack Test Suite
+Run the test suite to verify pipeline health, scale normalization, modality checks, and edge case handling:
 ```bash
 python integration_test.py
 ```
