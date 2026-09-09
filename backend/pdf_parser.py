@@ -1,4 +1,5 @@
-import fitz  # PyMuPDF
+import pymupdf as fitz
+
 import os
 from typing import List, Dict, Any
 
