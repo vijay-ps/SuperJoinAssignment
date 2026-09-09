@@ -20,23 +20,6 @@ The application is deployed live and ready for instant evaluation:
 ### Live Web Application
 Simply open **[https://super-join-assingnment-3642571d56fb.herokuapp.com/](https://super-join-assingnment-3642571d56fb.herokuapp.com/)** in any modern web browser to interact with the system, inspect starter dataset facts, upload new PDFs, and view cross-document relationship reasoning.
 
-### Optional Local Execution
-If you wish to run the application locally on your machine:
-```bash
-# 1. Clone repo & install dependencies
-git clone https://github.com/vijay-ps/SuperJoinAssignment.git
-cd SuperJoinAssignment
-pip install -r requirements.txt
-
-# 2. Add GEMINI_API_KEY to .env file
-echo "GEMINI_API_KEY=your_gemini_api_key_here" > .env
-
-# 3. Seed starter dataset & start server
-python backend/seeder.py
-python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
-```
-Open **`http://127.0.0.1:8000`** in your browser.
-
 ---
 
 ## Video Demo
